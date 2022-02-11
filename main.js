@@ -11,6 +11,9 @@ let guess = Number(prompt("> "));
 // starts at 2 because first turn was used at prompt
 let turns = 2;
 
+// encompass everyhting in while loop to allow for the 'correct' message to display after wrong 
+// initial guess.
+
 while (turns > 0) {
     // use if statements to cover all possibilities
     // est increment based on which 'if' statement is true
@@ -28,7 +31,7 @@ while (turns > 0) {
     }
 }
 if (turns === 0) {
-    console.log("Sorry! Out of turns! The correct number is " + randomNum + ".");
+    console.log("Wrong! Out of turns! The correct number is " + randomNum + ".");
 }
 
     
@@ -45,6 +48,6 @@ if (turns === 0) {
 // make while loop increment by subtracting one each time guess is checked
 // use if statements to check guess:
 // if guess is less than randomNum, output "sorry too low message" and prompt another guess
-// if guess is higher than randomNum, output "sorry too low message" and prompt another guess
+// if guess is higher than randomNum, output "sorry too high message" and prompt another guess
 // allow for congrats message to appear when correct answer guessed after an initial wrong answer
 // when counter gets to three tries, output sorry message and answer.
