@@ -1,40 +1,50 @@
 const prompt = require('prompt-sync')();
 
-// the number I chose is 16 and cannot be changed
-const myNum = 16
+// the random number generated and cannot be changed
+const randomNum = Math.floor(Math.random() * 100) + 1
 
 // by formatting it this way, I can have it prompt the number at the '>' like in the example.
-console.log("Guess what number I'm thinking of between 1-100: ");
+console.log("Guess a number between 1-100: ");
 let guess = Number(prompt("> "));
 
 // establish counter to limit how many tries you get (sets while loop condition and increment)
-let count = 1;
+// starts at 2 because first turn was used at prompt
+let turns = 2;
 
-// Start with 'if' statement that checks whether or not the number was guessed correctly (guess=myNum)
-if (guess !== myNum) {
-    // 'while' loop created when guess does not equal myNum to limit tries to 3 (based on 'count'). 
-    while (count < 3) {
-        // adds one to count after each loop
-        count++;
-        // two separate 'if' statements must be made to check 'guess' so the 'guess' is checked separately when looped
-        if (guess < myNum) {
-            console.log("Sorry, too low! Guess again: ")
-            guess = prompt("> ");
-        } 
-        if (guess > myNum) {
-            console.log("Sorry, too high! Guess again: ")
-            guess = prompt("> ");
-        }
-        
+while (turns > 0) {
+    // use if statements to cover all possibilities
+    // est increment based on which 'if' statement is true
+   if (guess === randomNum) {
+       turns = 0
+       console.log("Congratulations! " + randomNum + " is the correct number!");
+    } else if (guess < randomNum) {
+        turns--;
+        console.log("Sorry, too low! Guess again: ");
+        guess = prompt("> ");
+    } else if (guess > randomNum) {
+        turns--;
+        console.log("Sorry, too high! Guess again: ");
+        guess = prompt("> ");
     }
-    // displays when loop ends and correct number has not been guessed
-    // if (count === 3) {
-    console.log("Sorry! Out of tries! The number I was thinking of is " + myNum + ".")
-    // } 
-    
-} else if (guess === myNum) {
-    console.log("Congratulations! " + myNum + " is the number I was thinking of!")
+}
+if (turns === 0) {
+    console.log("Sorry! Out of turns! The correct number is " + randomNum + ".");
 }
 
-// count has to start at count=1 and the count++; has to be before the 'if' statements under the while loop 
-// or the amount of tries ends up being too many
+    
+    
+
+
+
+
+// only three attempts.
+// first question: does guess = randomNum
+// if yes: congrats message
+// if no: check next 'if' condition
+// make while loop condition countdown turns from 3 
+// make while loop increment by subtracting one each time guess is checked
+// use if statements to check guess:
+// if guess is less than randomNum, output "sorry too low message" and prompt another guess
+// if guess is higher than randomNum, output "sorry too low message" and prompt another guess
+// allow for congrats message to appear when correct answer guessed after an initial wrong answer
+// when counter gets to three tries, output sorry message and answer.
