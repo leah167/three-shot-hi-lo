@@ -1,8 +1,8 @@
 const prompt = require('prompt-sync')();
 
 // the random number generated and cannot be changed
-// const randomNum = Math.floor(Math.random() * 100) + 1
-const randomNum = Number (3)
+const randomNum = Math.floor(Math.random() * 100) + 1
+// const randomNum = Number (3) I used this to check the program mulitple ways.
 // by formatting it this way, I can have it prompt the number at the '>' like in the example.
 console.log("Guess a number between 1-100: ");
 let guess = Number(prompt("> "));
