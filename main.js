@@ -1,8 +1,8 @@
 const prompt = require('prompt-sync')();
 
 // the random number generated and cannot be changed
-const randomNum = Math.floor(Math.random() * 100) + 1
-
+// const randomNum = Math.floor(Math.random() * 100) + 1
+const randomNum = Number (3)
 // by formatting it this way, I can have it prompt the number at the '>' like in the example.
 console.log("Guess a number between 1-100: ");
 let guess = Number(prompt("> "));
@@ -18,21 +18,36 @@ while (turns > 0) {
     // use if statements to cover all possibilities
     // est increment based on which 'if' statement is true
    if (guess === randomNum) {
-       turns = 0
        console.log("Congratulations! " + randomNum + " is the correct number!");
-    } else if (guess < randomNum) {
-        turns--;
+       turns=-1;
+    } 
+    if (guess < randomNum) {
+        
         console.log("Sorry, too low! Guess again: ");
-        guess = prompt("> ");
-    } else if (guess > randomNum) {
+        guess = Number(prompt("> "));
         turns--;
+    } 
+    if (guess > randomNum) {
+        
         console.log("Sorry, too high! Guess again: ");
-        guess = prompt("> ");
+        guess = Number(prompt("> "));
+        turns--;
     }
 }
 if (turns === 0) {
-    console.log("Wrong! Out of turns! The correct number is " + randomNum + ".");
+    if (guess === randomNum) {
+        console.log("Congratulations! " + randomNum + " is the correct number!");
+    }else {
+        console.log("Wrong! Out of turns! The correct number is " + randomNum + ".");
+    }
 }
+// if (guess === randomNum && turns === 0) {
+//     console.log("Congratulations! " + randomNum + " is the correct number!");
+// }
+// if (guess !== randomNum && turns === 0) {
+//     console.log("Wrong! Out of turns! The correct number is " + randomNum + ".");
+// } 
+
 
     
     
